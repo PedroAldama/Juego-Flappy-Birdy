@@ -135,7 +135,8 @@
 			"Usuario",
 			"User",
 			"Enviar",
-			"ParaRegistro"
+			"ParaRegistro",
+			"reset"
 		],
 		"subfolders": []
 	},

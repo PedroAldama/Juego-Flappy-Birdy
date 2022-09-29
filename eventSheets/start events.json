@@ -239,17 +239,85 @@
 						"variable": "data",
 						"value": "replace(data,\"points:\",\"\")"
 					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "Text2",
-					"sid": 375731632612638,
-					"parameters": {
-						"text": "data"
-					}
 				}
 			],
-			"sid": 800922278983186
+			"sid": 800922278983186,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 755721771354343,
+							"parameters": {
+								"variable": "data",
+								"comparison": 0,
+								"value": "\"null\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 191403754725551,
+							"parameters": {
+								"variable": "data",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "Text2",
+							"sid": 984707330867619,
+							"parameters": {
+								"text": "data"
+							}
+						}
+					],
+					"sid": 287031960938755
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 241239458277606
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Text2",
+							"sid": 783088865192093,
+							"parameters": {
+								"text": "data"
+							}
+						}
+					],
+					"sid": 327569732235918
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "reset",
+					"sid": 605024387424916
+				}
+			],
+			"actions": [
+				{
+					"id": "clear-storage",
+					"objectClass": "LocalStorage",
+					"sid": 378953534202568
+				}
+			],
+			"sid": 697905906692870
 		}
 	],
 	"sid": 301100560210568

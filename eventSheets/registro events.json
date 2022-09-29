@@ -21,6 +21,14 @@
 						"data": "\"{\n\"\"nombre\"\":\"\"\"&User.Text&\"\"\"\n}\"",
 						"method": "\"PATCH\""
 					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 280654514624507,
+					"parameters": {
+						"layout": "Start"
+					}
 				}
 			],
 			"sid": 685477520830401
@@ -38,7 +46,7 @@
 				{
 					"id": "go-to-layout",
 					"objectClass": "System",
-					"sid": 428980620082444,
+					"sid": 976036236753668,
 					"parameters": {
 						"layout": "Start"
 					}

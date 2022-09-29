@@ -36,66 +36,79 @@
 					}
 				}
 			],
-			"sid": 894594588559953
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-boolean-eventvar",
-					"objectClass": "System",
-					"sid": 132023507990143,
-					"parameters": {
-						"variable": "IdToogle"
-					}
-				}
-			],
-			"actions": [],
-			"sid": 390247177620207,
+			"sid": 894594588559953,
 			"children": [
 				{
 					"eventType": "block",
-					"conditions": [],
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 704810833955019,
+							"parameters": {
+								"variable": "IdToogle"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 248586453864354,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 243951834678514,
+									"parameters": {
+										"variable": "Score",
+										"comparison": 4,
+										"value": "data"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "post-to-url",
+									"objectClass": "conection",
+									"sid": 938070425095514,
+									"parameters": {
+										"tag": "\"Score\"",
+										"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player/\"&UserID&\".json\"",
+										"data": "\"{\"\"points\"\" : \"\"\"&Score&\"\"\"}\"",
+										"method": "\"PATCH\""
+									}
+								}
+							],
+							"sid": 438021370188500
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 228987412147874
+						}
+					],
 					"actions": [
 						{
 							"id": "post-to-url",
 							"objectClass": "conection",
-							"sid": 587104803930505,
+							"sid": 233313142825229,
 							"parameters": {
-								"tag": "\"Score\"",
-								"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player/\"&UserID&\".json\"",
+								"tag": "\"NuevoUsuario\"",
+								"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player.json\"",
 								"data": "\"{\"\"points\"\" : \"\"\"&Score&\"\"\"}\"",
-								"method": "\"PATCH\""
+								"method": "\"POST\""
 							}
 						}
 					],
-					"sid": 952219357168862
+					"sid": 991905359690323
 				}
 			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "else",
-					"objectClass": "System",
-					"sid": 950539147074264
-				}
-			],
-			"actions": [
-				{
-					"id": "post-to-url",
-					"objectClass": "conection",
-					"sid": 621837443027508,
-					"parameters": {
-						"tag": "\"NuevoUsuario\"",
-						"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player.json\"",
-						"data": "\"{\"\"points\"\" : \"\"\"&Score&\"\"\"}\"",
-						"method": "\"POST\""
-					}
-				}
-			],
-			"sid": 302475948097856
 		},
 		{
 			"eventType": "block",
