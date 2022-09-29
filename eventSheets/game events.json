@@ -268,9 +268,9 @@
 						{
 							"id": "go-to-layout-by-name",
 							"objectClass": "System",
-							"sid": 928437583794643,
+							"sid": 908999134441584,
 							"parameters": {
-								"layout": "\"GameOver\""
+								"layout": "\"Game Over\""
 							}
 						},
 						{
