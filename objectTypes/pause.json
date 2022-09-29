@@ -1,0 +1,15 @@
+{
+	"name": "Pause",
+	"plugin-id": "Button",
+	"sid": 344670609597049,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "pausa",
+			"type": "boolean",
+			"desc": "",
+			"sid": 983245215303698
+		}
+	],
+	"behaviorTypes": []
+}

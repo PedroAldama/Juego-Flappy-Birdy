@@ -1,0 +1,256 @@
+{
+	"name": "Start events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "data",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 341441153835554
+		},
+		{
+			"eventType": "variable",
+			"name": "UserID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 613273595029135
+		},
+		{
+			"eventType": "variable",
+			"name": "IdToogle",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 180374533206396
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 505001168867156
+				}
+			],
+			"actions": [
+				{
+					"id": "check-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 886429986558557,
+					"parameters": {
+						"key": "\"id\""
+					}
+				}
+			],
+			"sid": 211349283594860
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-exists",
+					"objectClass": "LocalStorage",
+					"sid": 699877565659857,
+					"parameters": {
+						"key": "\"id\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "get-item",
+					"objectClass": "LocalStorage",
+					"sid": 672104215174017,
+					"parameters": {
+						"key": "\"id\""
+					}
+				}
+			],
+			"sid": 259573632557968
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-get",
+					"objectClass": "LocalStorage",
+					"sid": 578616510551299,
+					"parameters": {
+						"key": "\"id\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 441881567116070,
+					"parameters": {
+						"variable": "UserID",
+						"value": "LocalStorage.ItemValue"
+					}
+				},
+				{
+					"id": "request-url",
+					"objectClass": "conection",
+					"sid": 923475631530628,
+					"parameters": {
+						"tag": "\"Score\"",
+						"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player/\"&UserID&\"/points.json\""
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 509217449742461,
+					"parameters": {
+						"variable": "IdToogle",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 582658524860770
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-item-missing",
+					"objectClass": "LocalStorage",
+					"sid": 285274144888400,
+					"parameters": {
+						"key": "\"id\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 817318188732364,
+					"parameters": {
+						"variable": "UserID",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 232326703506001,
+					"parameters": {
+						"variable": "IdToogle",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 918368645659738
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-in-touch",
+					"objectClass": "Touch",
+					"sid": 564067152394008
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 959153354333283,
+					"parameters": {
+						"seconds": ".25"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 1321255376915732,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 8450924142424696
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "conection",
+					"sid": 866926143061489,
+					"parameters": {
+						"tag": "\"Score\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 595715630184519,
+					"parameters": {
+						"variable": "data",
+						"value": "conection.LastData"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 882846071041954,
+					"parameters": {
+						"variable": "data",
+						"value": "replace(data,\"\"\"\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 808652209544415,
+					"parameters": {
+						"variable": "data",
+						"value": "replace(data,\"}\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 782368287401570,
+					"parameters": {
+						"variable": "data",
+						"value": "replace(data,\"{\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 673837482689628,
+					"parameters": {
+						"variable": "data",
+						"value": "replace(data,\"points:\",\"\")"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Text2",
+					"sid": 375731632612638,
+					"parameters": {
+						"text": "data"
+					}
+				}
+			],
+			"sid": 800922278983186
+		}
+	],
+	"sid": 301100560210568
+}

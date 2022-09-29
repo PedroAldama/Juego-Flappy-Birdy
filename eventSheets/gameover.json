@@ -1,0 +1,223 @@
+{
+	"name": "GameOver",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 598849643277584
+				}
+			],
+			"actions": [
+				{
+					"id": "move-to-top",
+					"objectClass": "FinalScore",
+					"sid": 642852227240536
+				},
+				{
+					"id": "set-text",
+					"objectClass": "FinalScore",
+					"sid": 369528408762224,
+					"parameters": {
+						"text": "Score"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 681332008215743,
+					"parameters": {
+						"audio-file": "die",
+						"loop": "not-looping",
+						"volume": "10",
+						"tag-optional": "\"Muerte\""
+					}
+				}
+			],
+			"sid": 894594588559953
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 132023507990143,
+					"parameters": {
+						"variable": "IdToogle"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 390247177620207,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "post-to-url",
+							"objectClass": "conection",
+							"sid": 587104803930505,
+							"parameters": {
+								"tag": "\"Score\"",
+								"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player/\"&UserID&\".json\"",
+								"data": "\"{\"\"points\"\" : \"\"\"&Score&\"\"\"}\"",
+								"method": "\"PATCH\""
+							}
+						}
+					],
+					"sid": 952219357168862
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 950539147074264
+				}
+			],
+			"actions": [
+				{
+					"id": "post-to-url",
+					"objectClass": "conection",
+					"sid": 621837443027508,
+					"parameters": {
+						"tag": "\"NuevoUsuario\"",
+						"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player.json\"",
+						"data": "\"{\"\"points\"\" : \"\"\"&Score&\"\"\"}\"",
+						"method": "\"POST\""
+					}
+				}
+			],
+			"sid": 302475948097856
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap",
+					"objectClass": "Touch",
+					"sid": 547498764306904
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 199142548388114,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 104783307499618
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ParaRegistro",
+					"sid": 682197150321836
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 527606801124623,
+					"parameters": {
+						"layout": "Registro"
+					}
+				}
+			],
+			"sid": 946555320932769
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "conection",
+					"sid": 394726779564453,
+					"parameters": {
+						"tag": "\"NuevoUsuario\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 981835568285966,
+					"parameters": {
+						"variable": "UserID",
+						"value": "conection.LastData"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 335974739184954,
+					"parameters": {
+						"variable": "UserID",
+						"value": "replace(UserID,\"\"\"\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 954694846391758,
+					"parameters": {
+						"variable": "UserID",
+						"value": "replace(UserID,\"}\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 817970129418211,
+					"parameters": {
+						"variable": "UserID",
+						"value": "replace(UserID,\"{\",\"\")"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 554161709141413,
+					"parameters": {
+						"variable": "UserID",
+						"value": "replace(UserID,\"name\",\"\")"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 274229630652317,
+					"parameters": {
+						"variable": "IdToogle",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-item",
+					"objectClass": "LocalStorage",
+					"sid": 894765643323561,
+					"parameters": {
+						"key": "\"id\"",
+						"value": "UserID"
+					}
+				}
+			],
+			"sid": 111900033306546
+		}
+	],
+	"sid": 136940819560561
+}

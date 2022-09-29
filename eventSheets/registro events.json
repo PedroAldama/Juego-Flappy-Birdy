@@ -1,0 +1,51 @@
+{
+	"name": "Registro events",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Enviar",
+					"sid": 452993278169361
+				}
+			],
+			"actions": [
+				{
+					"id": "post-to-url",
+					"objectClass": "conection",
+					"sid": 527286919353194,
+					"parameters": {
+						"tag": "\"Registro\"",
+						"url": "\"https://flappybirdy-5f895-default-rtdb.firebaseio.com/player/\"&UserID&\".json\"",
+						"data": "\"{\n\"\"nombre\"\":\"\"\"&User.Text&\"\"\"\n}\"",
+						"method": "\"PATCH\""
+					}
+				}
+			],
+			"sid": 685477520830401
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-double-tap",
+					"objectClass": "Touch",
+					"sid": 441602492418233
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 428980620082444,
+					"parameters": {
+						"layout": "Start"
+					}
+				}
+			],
+			"sid": 497510649341529
+		}
+	],
+	"sid": 657860328742453
+}

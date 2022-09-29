@@ -1,0 +1,10 @@
+{
+	"name": "conection",
+	"plugin-id": "AJAX",
+	"sid": 580224309201055,
+	"singleglobal-inst": {
+		"type": "conection",
+		"properties": {},
+		"uid": 21
+	}
+}
